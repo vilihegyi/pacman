@@ -1,27 +1,29 @@
-import random
-
 from movement import *
 
 
 def create_ghosts():
+    # Orange ghost - Clyde
     orange_ghost.shape("pictures/Ghost_orange.gif")
     orange_ghost.speed(0)
     orange_ghost.penup()
     orange_ghost.direction = "up"
     orange_ghost.goto(-30, 20)
     orange_ghost.stamp()
+    # Pink ghost - Pinky
     pink_ghost.shape("pictures/Ghost_pink.gif")
     pink_ghost.speed(0)
     pink_ghost.penup()
     pink_ghost.direction = "up"
     pink_ghost.goto(-10, 20)
     pink_ghost.stamp()
+    # Red ghost - Blinky
     red_ghost.shape("pictures/Ghost_red.gif")
     red_ghost.speed(0)
     red_ghost.penup()
     red_ghost.direction = "up"
     red_ghost.goto(10, 20)
     red_ghost.stamp()
+    # Turquoise ghost - Inky
     turquoise_ghost.shape("pictures/Ghost_turquoise.gif")
     turquoise_ghost.speed(0)
     turquoise_ghost.penup()
@@ -30,69 +32,18 @@ def create_ghosts():
     turquoise_ghost.stamp()
 
 
-def move_orange_ghost():
-    direction = random.randint(0, 4)
-    if direction == 1:
-        direction_string = "up"
-    elif direction == 2:
-        direction_string = "down"
-    elif direction == 3:
-        direction_string = "left"
-    else:
-        direction_string = "right"
-    move_ghost(orange_ghost, direction_string)
-
-
-def move_red_ghost():
-    direction = random.randint(0, 4)
-    if direction == 1:
-        direction_string = "up"
-    elif direction == 2:
-        direction_string = "down"
-    elif direction == 3:
-        direction_string = "left"
-    else:
-        direction_string = "right"
-    move_ghost(red_ghost, direction_string)
-
-
-def move_pink_ghost():
-    direction = random.randint(0, 4)
-    if direction == 1:
-        direction_string = "up"
-    elif direction == 2:
-        direction_string = "down"
-    elif direction == 3:
-        direction_string = "left"
-    else:
-        direction_string = "right"
-    move_ghost(pink_ghost, direction_string)
-
-
-def move_turquoise_ghost():
-    direction = random.randint(0, 4)
-    if direction == 1:
-        direction_string = "up"
-    elif direction == 2:
-        direction_string = "down"
-    elif direction == 3:
-        direction_string = "left"
-    else:
-        direction_string = "right"
-    move_ghost(turquoise_ghost, direction_string)
-
-
-def move_ghost(ghost, direction):
+def move_ghost(ghost):
     x = ghost.xcor()
     y = ghost.ycor()
-    if direction == "up" and y < 280:
-        y += 10
-    if direction == "down" and y > -280:
-        y -= 10
-    if direction == "left" and x > -250:
-        x -= 10
-    if direction == "right" and x < 250:
+    if x < get_player().x and movement_is_valid(x + 10, y):
         x += 10
+    elif x > get_player().x and movement_is_valid(x - 10, y):
+        x -= 10
+    elif y < get_player().y and movement_is_valid(x, y + 10):
+        y += 10
+    elif y >= get_player().y and movement_is_valid(x, y - 10):
+        y -= 10
+
     # Refresh coordinates and reset the direction
     if movement_is_valid(x, y):
         ghost.setx(x)

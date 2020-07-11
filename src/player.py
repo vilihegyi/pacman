@@ -7,6 +7,8 @@ def create_player():
     _player.shape("pictures/Pacman_right.gif")
     _player.color("yellow")
     _player.penup()
+    _player.x = 0
+    _player.y = -40
     _player.goto(0, -40)  # Make sure character is in center of the screen
     _player.direction = ""
     _player.alive = True

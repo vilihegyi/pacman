@@ -32,6 +32,15 @@ def init_game():
 
 
 def end_game():
+    # Display end message on window
+    _pen = turtle.Turtle()
+    _pen.hideturtle()
+    _pen.speed(0)
+    _pen.shape("square")
+    _pen.color("white")
+    _pen.penup()
+    _pen.goto(0, 20)
+    _pen.write("Game over!".format("0"), align="center", font=("Courier", 12, "normal"))
     _window.mainloop()
 
 
@@ -42,7 +51,7 @@ def update_window():
 def play_intro_song():
     update_window()
     winsound.PlaySound("music/Pacman_intro.wav", winsound.SND_ASYNC)
-    #time.sleep(4)
+    time.sleep(4)
 
 
 def game_over():

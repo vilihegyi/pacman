@@ -128,6 +128,8 @@ def move_player():
         _player.shape("pictures/Pacman_right.gif")
     # Refresh coordinates and reset the direction
     if movement_is_valid(x, y):
+        _player.x = x
+        _player.y = y
         _player.setx(x)
         _player.sety(y)
         i = 0
