@@ -42,5 +42,3 @@ while not game_over():
 minutes, seconds = divmod(elapsed_time - start_time, 60)
 print("Game finished in: %d:%d" % (minutes, seconds))
 end_game()
-# TO-DO : Display game ended in the visual box too
-# antonio.luputi@uav.ro
